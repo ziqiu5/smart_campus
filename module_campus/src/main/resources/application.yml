@@ -6,7 +6,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
 
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/sgg_zhxy_db?characterEncoding=utf-8&serverTimezone=GMT%2B8&userSSL=false
+    url: jdbc:mysql://localhost:3306/campus?characterEncoding=utf-8&userSSL=false
     username: root
     password: cjx1125061985
 

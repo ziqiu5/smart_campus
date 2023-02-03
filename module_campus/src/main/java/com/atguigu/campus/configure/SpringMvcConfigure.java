@@ -1,4 +1,4 @@
-package com.atgiugu.campus.configure;
+package com.atguigu.campus.configure;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

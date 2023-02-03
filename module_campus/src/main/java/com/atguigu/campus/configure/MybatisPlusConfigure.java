@@ -1,4 +1,4 @@
-package com.atgiugu.campus.configure;
+package com.atguigu.campus.configure;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;

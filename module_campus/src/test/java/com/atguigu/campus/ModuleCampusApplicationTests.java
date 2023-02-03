@@ -1,4 +1,4 @@
-package com.atgiugu.campus;
+package com.atguigu.campus;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

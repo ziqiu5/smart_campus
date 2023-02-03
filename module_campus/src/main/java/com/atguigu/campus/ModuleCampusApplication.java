@@ -1,4 +1,4 @@
-package com.atgiugu.campus;
+package com.atguigu.campus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
