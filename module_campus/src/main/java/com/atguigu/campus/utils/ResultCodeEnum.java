@@ -2,11 +2,11 @@ package com.atguigu.campus.utils;
 
 /**
  * ClassName: ResultCodeEnum
- * Package: com.atgiugu.campus.utils
+ * Package: com.atguigu.campus.utils
  * Description:
  *
  * @author ziqiu
- * @Create: 2023/2/3 - 21:29  21:29
+ * @Create: 2023/2/4 - 16:16  16:16
  * @Version: v1.0
  */
 
@@ -16,7 +16,6 @@ import lombok.Getter;
 /**
  * 统一返回结果状态信息类
  *
- * @author ziqiu
  */
 @Getter
 public enum ResultCodeEnum {

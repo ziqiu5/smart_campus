@@ -1,0 +1,13 @@
+{
+  "menus": [
+    "",
+    "User", 
+    "Role"
+  ],
+  "buttons": [
+    "User.btn.add",
+    "User.btn.remove",
+    "Role.btn.assgin",
+    "Permission.btn.update"
+  ]
+}

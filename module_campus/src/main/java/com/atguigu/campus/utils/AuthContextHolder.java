@@ -2,11 +2,11 @@ package com.atguigu.campus.utils;
 
 /**
  * ClassName: AuthContextHolder
- * Package: com.atgiugu.campus.utils
+ * Package: com.atguigu.campus.utils
  * Description:
  *
  * @author ziqiu
- * @Create: 2023/2/3 - 21:28  21:28
+ * @Create: 2023/2/4 - 16:15  16:15
  * @Version: v1.0
  */
 
@@ -33,3 +33,4 @@ public class AuthContextHolder {
         return userName;
     }
 }
+

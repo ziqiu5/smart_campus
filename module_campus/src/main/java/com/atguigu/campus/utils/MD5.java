@@ -2,14 +2,13 @@ package com.atguigu.campus.utils;
 
 /**
  * ClassName: MD5
- * Package: com.atgiugu.campus.utils
+ * Package: com.atguigu.campus.utils
  * Description:
  *
  * @author ziqiu
- * @Create: 2023/2/3 - 21:29  21:29
+ * @Create: 2023/2/4 - 16:15  16:15
  * @Version: v1.0
  */
-
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -42,3 +41,4 @@ public final class MD5 {
 
 
 }
+

@@ -1,0 +1,61 @@
+[
+  {
+    "name": "权限管理",
+    "code": "Auth",
+    "children": [
+      {
+        "name": "用户管理",
+        "code": "User",
+        "buttons": [
+          {
+            "name": "添加", 
+            "code": "User.btn.add"
+          },
+          {
+            "name": "删除", 
+            "code": "User.btn.remove"
+          },
+          {
+            "name": "分配角色", 
+            "code": "User.btn.assgin"
+          }
+        ]
+      },
+      {
+        "name": "角色管理",
+        "path": "role/list",
+        "code": "Role",
+        "buttons": [
+          {
+            "name": "删除", 
+            "code": "Role.btn.remove"
+          },
+          {
+            "name": "分配权限", 
+            "code": "Role.btn.assgin", 
+            "toCode": "RoleAuth"
+          }
+        ]
+      },
+      {
+        "name": "菜单管理",
+        "path": "code/list",
+        "code": "code", 
+        "buttons": [
+          {
+            "name": "添加", 
+            "code": "code.btn.add"
+          },
+          {
+            "name": "修改", 
+            "code": "code.btn.update"
+          },
+          {
+            "name": "删除", 
+            "code": "code.btn.remove"
+          }
+        ]
+      }
+    ]
+  }
+]

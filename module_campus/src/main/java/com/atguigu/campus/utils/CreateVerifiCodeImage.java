@@ -2,11 +2,11 @@ package com.atguigu.campus.utils;
 
 /**
  * ClassName: CreateVerifiCodeImage
- * Package: com.atgiugu.campus.utils
+ * Package: com.atguigu.campus.utils
  * Description:
  *
  * @author ziqiu
- * @Create: 2023/2/3 - 21:24  21:24
+ * @Create: 2023/2/4 - 16:22  16:22
  * @Version: v1.0
  */
 
@@ -23,7 +23,6 @@ public class CreateVerifiCodeImage {
 
     private static int WIDTH = 90;
     private static int HEIGHT = 35;
-
     //字符大小
     private static int FONT_SIZE = 20;
     //验证码
@@ -121,3 +120,4 @@ public class CreateVerifiCodeImage {
         return new Color(ran.nextInt(220), ran.nextInt(220), ran.nextInt(220));
     }
 }
+
