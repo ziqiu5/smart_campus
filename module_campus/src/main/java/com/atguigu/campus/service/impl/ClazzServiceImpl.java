@@ -6,6 +6,9 @@ import com.atguigu.campus.service.ClazzService;
 import com.atguigu.campus.mapper.ClazzMapper;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
 * @author ziqiu
 * @description 针对表【tb_clazz】的数据库操作Service实现
@@ -14,7 +17,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClazzServiceImpl extends ServiceImpl<ClazzMapper, Clazz>
     implements ClazzService{
-
 }
 
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>删除</title>
+</head>
+<body>
+
+<form action="#" th:href="@{/sms/gradeController/deleteGrade}" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="text" name="id" value="12">
+	<input type="submit" value="确认删除"/>
+</form>
+
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.atguigu.campus.service;
 
 import com.atguigu.campus.pojo.Grade;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,5 +10,4 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2023-02-04 16:09:40
 */
 public interface GradeService extends IService<Grade> {
-
 }
