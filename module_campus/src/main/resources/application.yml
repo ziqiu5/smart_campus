@@ -26,3 +26,6 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+upload:
+  file:
+    location: D:/JavaProject/smart_campus/module_campus/src/main/resources/static/upload/

@@ -64,7 +64,7 @@ public class Student implements Serializable {
     /**
      * 
      */
-    private String introduction;
+    private String introducation;
 
     /**
      * 

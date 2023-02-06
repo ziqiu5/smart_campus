@@ -1,4 +1,4 @@
-package com.atguigu.campus.utils;
+package com.atguigu.campus.configure;
 
 /**
  * ClassName: Swagger2Config
@@ -11,13 +11,10 @@ package com.atguigu.campus.utils;
  */
 
 
-import com.google.common.base.Predicates;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
-import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiInfo;

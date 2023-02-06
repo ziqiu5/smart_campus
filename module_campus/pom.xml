@@ -99,6 +99,7 @@
             <version>0.7.0</version>
         </dependency>
 
+        <!-- 文件上传依赖 -->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>

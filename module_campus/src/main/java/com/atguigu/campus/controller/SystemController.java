@@ -8,23 +8,28 @@ import com.atguigu.campus.service.AdminService;
 import com.atguigu.campus.service.StudentService;
 import com.atguigu.campus.service.TeacherService;
 import com.atguigu.campus.utils.*;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 将封装在result类中的数据以json格式返回给前端浏览器
  *
  * @author ziqiu
  */
+@Api(tags = "系统控制层")
 @RestController
 @RequestMapping("/sms/system")
 public class SystemController {
@@ -58,8 +63,9 @@ public class SystemController {
      *
      * @return 将校验的结果数据封装到Result类中返回给浏览器 若用户登录成功 则根据id和用户类型生成一个token放在Result类一起返回给浏览器
      */
+    @ApiOperation("登录功能 登陆成功将查询到的用户信息、用户类型 并封装id和userType成token 一起响应到浏览器")
     @PostMapping("/login")
-    public Result<Object> login(@RequestBody LoginForm loginForm, HttpSession session) {
+    public Result<Object> login(@ApiParam("封装到实体类中请求体的json数据") @RequestBody LoginForm loginForm, HttpSession session) {
         //校验验证码:
         String userInputCode = loginForm.getVerifiCode();
         //获取session中存放的验证码中的值
@@ -111,8 +117,9 @@ public class SystemController {
      * @param token 浏览器发送来的token
      * @return 封装数据到Result类 响应给浏览器
      */
+    @ApiOperation("将请求头中的token解析成id和用户类型 并根据id和类型查询用户信息 将信息和用户类型数据一起返回")
     @RequestMapping("/getInfo")
-    public Result<Object> getInfo(@RequestHeader("token") String token) {
+    public Result<Object> getInfo(@ApiParam("请求头中的token数据") @RequestHeader("token") String token) {
         //判断token是否还有效 返回为true表示已经失效
         if (JwtHelper.isExpiration(token)) {
             return Result.build(null, ResultCodeEnum.TOKEN_ERROR);
@@ -139,6 +146,60 @@ public class SystemController {
             map.put("userType", userType);
         }
         return Result.ok(map);
+    }
+
+    @ApiOperation("上传头像")
+    @PostMapping("/headerImgUpload")
+    public Result<Object> headerImgUpload(@ApiParam("封装请求体中的图片二进制数据") @RequestPart("multipartFile") MultipartFile multipartFile) throws IOException {
+        String originalFilename = multipartFile.getOriginalFilename();
+        assert originalFilename != null;
+        String photoName = UUID.randomUUID().toString().replace("-", "").toLowerCase().
+                concat(originalFilename.substring(originalFilename.lastIndexOf(".")));
+        String savePath = "D:/JavaProject/smart_campus/module_campus/src/main/resources/static/upload/".concat(photoName);
+        //保存图片
+        multipartFile.transferTo(new File(savePath));
+        return Result.ok("upload/".concat(photoName));
+    }
+
+    @ApiOperation("修改用户密码功能")
+    @PostMapping("updatePwd/{oldPwd}/{newPwd}")
+    public Result<Object> updatePwd(@ApiParam("请求头中的token数据") @RequestHeader("token") String token,
+                                    @ApiParam("路径参数中的原密码") @PathVariable("oldPwd") String oldPwd,
+                                    @ApiParam("路径参数中的新密码") @PathVariable("newPwd") String newPwd) {
+        //先判断一下token是否过期
+        if (JwtHelper.isExpiration(token)) {
+            return Result.fail().message("token失效,请重新登录后修改");
+        }
+        //获取用户id
+        Long userId = JwtHelper.getUserId(token);
+        //根据token 判断用户类型
+        Integer userType = JwtHelper.getUserType(token);
+        assert userType != null;
+        if(userType == 1){
+            //对旧密码进行校验
+            Admin admin = adminService.selectAdminById(userId);
+            if(!MD5.encrypt(oldPwd).equals(admin.getPassword())){
+                return Result.fail().message("原密码输入有误");
+            }
+            //原密码输入正确 就将新密码进行加密后进行修改
+            admin.setPassword(MD5.encrypt(newPwd));
+            adminService.update(admin,new LambdaQueryWrapper<Admin>().eq(Admin::getId,userId));
+        }else if(userType == 2){
+            Student student = studentService.selectAdminById(userId);
+            if(!MD5.encrypt(oldPwd).equals(student.getPassword())){
+                return Result.fail().message("原密码输入有误");
+            }
+            student.setPassword(MD5.encrypt(newPwd));
+            studentService.update(student,new LambdaQueryWrapper<Student>().eq(Student::getId,userId));
+        }else {
+            Teacher teacher = teacherService.selectAdminById(userId);
+            if(!MD5.encrypt(oldPwd).equals(teacher.getPassword())){
+                return Result.fail().message("原密码输入有误");
+            }
+            teacher.setPassword(MD5.encrypt(newPwd));
+            teacherService.update(teacher,new LambdaQueryWrapper<Teacher>().eq(Teacher::getId,userId));
+        }
+        return Result.ok();
     }
 
 
